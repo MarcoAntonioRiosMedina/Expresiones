@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class Expresiones {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese la cadena a verificar: ");
+        String Cadena = scanner.nextLine(); //inicio del scanner
+
+        // Seleccion de expresiones
+        System.out.println("Elija el tipo de expresión a verificar:");
+        System.out.println();
+        System.out.println("1. Hola Mundo");
+        System.out.println("2. Palabras clave");
+        System.out.println("3. Correo de la Universidad de Sonora");
+        System.out.println("4. Nombre de archivo");
+        System.out.println();
+        System.out.print("Opción: ");
+
+        int Opcion = scanner.nextInt();
+
+        boolean esValido = false;
+
+        switch (Opcion) {
+            case 1:
+                esValido = Cadena.matches("\\bHola mundo\\b"); //Valida la palabra seleccionada
+                break;
+            case 2:
+                esValido = Cadena.matches("\\b(Java|Python|Go|Pascal|Perl)\\b"); // Valida las opciones establecidas
+                break;
+            case 3:
+                esValido = Cadena.matches("^[a-zA-Z0-9._%+-]+@(unison|uson)\\.mx$"); //Valida las caracteristicas establecidas
+                break;
+            case 4:
+                esValido = Cadena.matches("^ISI\\d{4}-[12]\\.(txt|csv)$"); //Valida las caracteristicas establecidas
+                break;
+            default:
+                System.out.println("Opción inválida.");
+                return;
+        }
+
+        if (esValido) {
+            System.out.println("La cadena es válida según el patrón establecido.");
+        } else {
+            System.out.println("La cadena NO es válida según el patrón establecido.");
+        }
+
+        scanner.close();// fin del scanner
+    }
+} // end main
